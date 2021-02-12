@@ -1,0 +1,58 @@
+---
+source: svirpti/tests/simple.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Int
+    - name: b
+      sort: Int
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        Constant:
+          Bool: true
+      statements:
+        - Assign:
+            variable:
+              name: a
+            expression:
+              Variable:
+                name: b
+      successors:
+        - 2
+    - label: bb2
+      guard:
+        Constant:
+          Bool: true
+      statements:
+        - Assert:
+            assertion:
+              BinaryOperation:
+                kind: EqCmp
+                left:
+                  Variable:
+                    name: a
+                right:
+                  Variable:
+                    name: b
+            label: l1
+      successors:
+        - 3
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

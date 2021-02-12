@@ -1,0 +1,136 @@
+---
+source: vir-derive/tests/high_parser.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Bool
+    - name: b
+      sort: Int
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        Constant:
+          Bool: true
+      statements:
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  BinaryOperation:
+                    kind: And
+                    left:
+                      Variable:
+                        name: a
+                    right:
+                      Variable:
+                        name: a
+                right:
+                  Variable:
+                    name: a
+            label: label1
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: Or
+                left:
+                  BinaryOperation:
+                    kind: Or
+                    left:
+                      Variable:
+                        name: a
+                    right:
+                      Variable:
+                        name: a
+                right:
+                  Variable:
+                    name: a
+            label: label2
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: Or
+                left:
+                  BinaryOperation:
+                    kind: And
+                    left:
+                      Variable:
+                        name: a
+                    right:
+                      Variable:
+                        name: a
+                right:
+                  Variable:
+                    name: a
+            label: label3
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  BinaryOperation:
+                    kind: Or
+                    left:
+                      Variable:
+                        name: a
+                    right:
+                      Variable:
+                        name: a
+                right:
+                  Variable:
+                    name: a
+            label: label3
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  BinaryOperation:
+                    kind: GtCmp
+                    left:
+                      Variable:
+                        name: b
+                    right:
+                      Constant:
+                        Int: 0
+                right:
+                  Variable:
+                    name: a
+            label: label4
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  Variable:
+                    name: a
+                right:
+                  BinaryOperation:
+                    kind: GtCmp
+                    left:
+                      Variable:
+                        name: b
+                    right:
+                      Constant:
+                        Int: 0
+            label: label5
+      successors:
+        - 2
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

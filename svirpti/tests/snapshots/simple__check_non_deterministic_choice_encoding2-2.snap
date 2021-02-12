@@ -1,0 +1,65 @@
+---
+source: svirpti/tests/simple.rs
+expression: "lower(&program, &mut context).unwrap()"
+---
+uninterpreted_sorts: []
+variables:
+  - name: a@0
+    sort: Bool
+  - name: b@0
+    sort: Bool
+  - name: c@0
+    sort: Bool
+functions: []
+axioms: []
+basic_blocks:
+  - statements: []
+    successors:
+      - 1
+  - statements: []
+    successors:
+      - 2
+      - 3
+  - statements:
+      - Assume:
+          assertion:
+            Variable:
+              name: a@0
+          label: bb2
+      - Assume:
+          assertion:
+            Variable:
+              name: b@0
+          label: l1
+    successors:
+      - 4
+  - statements:
+      - Assume:
+          assertion:
+            Variable:
+              name: c@0
+          label: bb3
+    successors:
+      - 4
+  - statements:
+      - Assert:
+          assertion:
+            BinaryOperation:
+              kind: Or
+              left:
+                BinaryOperation:
+                  kind: Implies
+                  left:
+                    Variable:
+                      name: a@0
+                  right:
+                    Variable:
+                      name: b@0
+              right:
+                Variable:
+                  name: c@0
+          label: l3
+    successors:
+      - 5
+  - statements: []
+    successors: []

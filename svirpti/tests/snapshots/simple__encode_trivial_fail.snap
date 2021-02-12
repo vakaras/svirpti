@@ -1,0 +1,58 @@
+---
+source: svirpti/tests/simple.rs
+expression: encoded
+---
+declarations:
+  sorts: []
+  variables:
+    - name: x@0
+      sort: Bool
+    - name: BB@2
+      sort: Bool
+    - name: BB@1
+      sort: Bool
+    - name: BB@0
+      sort: Bool
+  functions: []
+  labels:
+    - name: expected_error
+assertions:
+  - BinaryOperation:
+      kind: EqCmp
+      left:
+        Variable:
+          name: BB@2
+      right:
+        Constant:
+          Bool: true
+  - BinaryOperation:
+      kind: EqCmp
+      left:
+        Variable:
+          name: BB@1
+      right:
+        BinaryOperation:
+          kind: And
+          left:
+            LabelledExpression:
+              name: expected_error
+              positivity: Negative
+              expression:
+                Variable:
+                  name: x@0
+          right:
+            Variable:
+              name: BB@2
+  - BinaryOperation:
+      kind: EqCmp
+      left:
+        Variable:
+          name: BB@0
+      right:
+        Variable:
+          name: BB@1
+  - UnaryOperation:
+      kind: Not
+      arg:
+        Variable:
+          name: BB@0

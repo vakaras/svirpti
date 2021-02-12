@@ -1,0 +1,23 @@
+---
+source: svirpti/tests/simple.rs
+expression: lowered
+---
+program {
+  uninterpreted_sorts: []
+  variables:
+    a@0: Bool
+    b@0: Bool
+  functions: []
+  axioms: []
+  blocks:
+    0:
+      successors: [1]
+    1:
+      assume bb1 !a@0
+      assume l1 a@0
+      assert l2 b@0
+      successors: [2]
+    2:
+      successors: []
+}
+

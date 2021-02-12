@@ -1,0 +1,47 @@
+---
+source: svirpti/tests/simple.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Bool
+    - name: b
+      sort: Bool
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        UnaryOperation:
+          kind: Not
+          arg:
+            Variable:
+              name: a
+      statements:
+        - Assume:
+            assertion:
+              Variable:
+                name: a
+            label: l1
+        - Assert:
+            assertion:
+              Variable:
+                name: b
+            label: l2
+      successors:
+        - 2
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

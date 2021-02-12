@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "smt",
+    "vir",
+    "vir-generate",
+    "vir-derive",
+    "svirpti",
+]

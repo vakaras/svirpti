@@ -1,0 +1,11 @@
+---
+source: smt/src/solvers/z3_smt2.rs
+expression: "(model, labels)"
+---
+- items:
+    - name: x
+      args: []
+      sort: Int
+      value:
+        Int: 2
+- []

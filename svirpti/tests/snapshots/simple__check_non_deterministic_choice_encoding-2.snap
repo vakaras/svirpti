@@ -1,0 +1,100 @@
+---
+source: svirpti/tests/simple.rs
+expression: "lower(&program, &mut context).unwrap()"
+---
+uninterpreted_sorts: []
+variables:
+  - name: a@0
+    sort: Bool
+  - name: b@0
+    sort: Bool
+  - name: x@0
+    sort: Int
+functions: []
+axioms: []
+basic_blocks:
+  - statements: []
+    successors:
+      - 1
+  - statements: []
+    successors:
+      - 2
+      - 3
+  - statements:
+      - Assume:
+          assertion:
+            Variable:
+              name: a@0
+          label: bb2
+      - Assume:
+          assertion:
+            BinaryOperation:
+              kind: GtCmp
+              left:
+                Variable:
+                  name: x@0
+              right:
+                Constant:
+                  Int: 5
+          label: l1
+    successors:
+      - 4
+  - statements:
+      - Assume:
+          assertion:
+            Variable:
+              name: b@0
+          label: bb3
+      - Assume:
+          assertion:
+            BinaryOperation:
+              kind: LtCmp
+              left:
+                Variable:
+                  name: x@0
+              right:
+                Constant:
+                  Int: 8
+          label: l2
+    successors:
+      - 4
+  - statements:
+      - Assert:
+          assertion:
+            BinaryOperation:
+              kind: Or
+              left:
+                BinaryOperation:
+                  kind: Implies
+                  left:
+                    Variable:
+                      name: a@0
+                  right:
+                    BinaryOperation:
+                      kind: GtCmp
+                      left:
+                        Variable:
+                          name: x@0
+                      right:
+                        Constant:
+                          Int: 5
+              right:
+                BinaryOperation:
+                  kind: Implies
+                  left:
+                    Variable:
+                      name: b@0
+                  right:
+                    BinaryOperation:
+                      kind: LtCmp
+                      left:
+                        Variable:
+                          name: x@0
+                      right:
+                        Constant:
+                          Int: 8
+          label: l3
+    successors:
+      - 5
+  - statements: []
+    successors: []

@@ -1,0 +1,104 @@
+---
+source: vir-derive/tests/high_parser.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Bool
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        Quantifier:
+          kind: ForAll
+          variables:
+            - name: b
+              sort: Int
+          triggers: []
+          body:
+            BinaryOperation:
+              kind: Implies
+              left:
+                BinaryOperation:
+                  kind: GtCmp
+                  left:
+                    Variable:
+                      name: a
+                  right:
+                    Constant:
+                      Int: 5
+              right:
+                BinaryOperation:
+                  kind: And
+                  left:
+                    BinaryOperation:
+                      kind: GtCmp
+                      left:
+                        Variable:
+                          name: a
+                      right:
+                        Constant:
+                          Int: 4
+                  right:
+                    Constant:
+                      Bool: true
+      statements:
+        - Assume:
+            assertion:
+              Quantifier:
+                kind: ForAll
+                variables:
+                  - name: a
+                    sort: Int
+                triggers:
+                  - parts:
+                      - Variable:
+                          name: a
+                      - Constant:
+                          Bool: true
+                body:
+                  BinaryOperation:
+                    kind: Implies
+                    left:
+                      BinaryOperation:
+                        kind: GtCmp
+                        left:
+                          Variable:
+                            name: a
+                        right:
+                          Constant:
+                            Int: 5
+                    right:
+                      BinaryOperation:
+                        kind: And
+                        left:
+                          BinaryOperation:
+                            kind: GtCmp
+                            left:
+                              Variable:
+                                name: a
+                            right:
+                              Constant:
+                                Int: 4
+                        right:
+                          Constant:
+                            Bool: true
+            label: label1
+      successors:
+        - 2
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

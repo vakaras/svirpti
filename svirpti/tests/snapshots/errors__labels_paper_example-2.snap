@@ -1,0 +1,24 @@
+---
+source: svirpti/tests/errors.rs
+expression: "(&error, error.get_trace_labels(&program.procedure))"
+---
+- failing_assertion: bounds_check
+  trace:
+    - 0
+    - 1
+    - 3
+    - 4
+  labels:
+    - bb_else
+  model:
+    variables:
+      j@1:
+        Int: -1
+      j@2:
+        Int: -1
+      k@0:
+        Int: -1
+- - entry
+  - bb1
+  - bb_else
+  - bb_merge

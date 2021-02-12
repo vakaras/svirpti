@@ -1,0 +1,16 @@
+---
+source: smt/src/solvers/z3_smt2.rs
+expression: "(model, labels)"
+---
+- items:
+    - name: k
+      args: []
+      sort: Int
+      value:
+        Int: 0
+    - name: ArrayAccess2
+      args: []
+      sort: Bool
+      value:
+        Bool: false
+- - ArrayAccess2

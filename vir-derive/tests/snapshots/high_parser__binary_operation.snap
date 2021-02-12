@@ -1,0 +1,30 @@
+---
+source: vir-derive/tests/high_parser.rs
+expression: program
+---
+program {
+  sorts: []
+  functions: []
+  axioms: []
+  procedure:
+    variables:
+      a: Bool
+      b: Int
+    blocks:
+      [0] entry:
+        guard: true
+        successors: [1]
+      [1] bb1:
+        guard: true
+        assume label1 ((a&&a)&&a)
+        assume label2 ((a||a)||a)
+        assume label3 ((a&&a)||a)
+        assume label3 ((a||a)&&a)
+        assume label4 ((b>0)&&a)
+        assume label5 (a&&(b>0))
+        successors: [2]
+      [2] exit:
+        guard: true
+        successors: []
+}
+

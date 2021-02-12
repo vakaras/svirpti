@@ -1,0 +1,33 @@
+---
+source: svirpti/tests/simple.rs
+expression: encoded
+---
+program {
+  declarations:
+    sorts:
+    variables:
+      a@0: Bool
+      b@0: Bool
+      c@0: Bool
+      BB@5: Bool
+      BB@4: Bool
+      BB@2: Bool
+      BB@3: Bool
+      BB@1: Bool
+      BB@0: Bool
+    functions:
+    labels:
+      l3
+      l1
+      bb2
+      bb3
+  assertions:
+    (BB@5==true)
+    (BB@4==(lblneg(l3: ((a@0==>b@0)||c@0))&&BB@5))
+    (BB@2==(lblpos(bb2: a@0)==>(lblpos(l1: b@0)==>BB@4)))
+    (BB@3==(lblpos(bb3: c@0)==>BB@4))
+    (BB@1==(BB@2&&BB@3))
+    (BB@0==BB@1)
+    !BB@0
+}
+

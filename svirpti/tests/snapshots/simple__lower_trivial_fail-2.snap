@@ -1,0 +1,24 @@
+---
+source: svirpti/tests/simple.rs
+expression: lowered
+---
+uninterpreted_sorts: []
+variables:
+  - name: x@0
+    sort: Bool
+functions: []
+axioms: []
+basic_blocks:
+  - statements: []
+    successors:
+      - 1
+  - statements:
+      - Assert:
+          assertion:
+            Variable:
+              name: x@0
+          label: expected_error
+    successors:
+      - 2
+  - statements: []
+    successors: []

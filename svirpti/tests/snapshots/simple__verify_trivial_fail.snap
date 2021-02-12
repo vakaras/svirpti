@@ -1,0 +1,13 @@
+---
+source: svirpti/tests/simple.rs
+expression: errors
+---
+- failing_assertion: expected_error
+  trace:
+    - 0
+    - 1
+  labels: []
+  model:
+    variables:
+      x@0:
+        Bool: false

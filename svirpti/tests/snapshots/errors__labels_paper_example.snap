@@ -1,0 +1,34 @@
+---
+source: svirpti/tests/errors.rs
+expression: "lower(&program, &mut context).unwrap()"
+---
+program {
+  uninterpreted_sorts: []
+  variables:
+    j@0: Int
+    k@0: Int
+    j@1: Int
+    j@2: Int
+  functions: []
+  axioms: []
+  blocks:
+    0:
+      successors: [1]
+    1:
+      successors: [2, 3]
+    2:
+      assume bb_then (!(k@0<10)&&(k@0<20))
+      assume (j@1==k@0)
+      successors: [4]
+    3:
+      assume bb_else !(!(k@0<10)&&(k@0<20))
+      assume (j@2==k@0)
+      successors: [4]
+    4:
+      assume (j@1==j@2)
+      assert bounds_check ((0<=j@2)&&(j@2<100))
+      successors: [5]
+    5:
+      successors: []
+}
+

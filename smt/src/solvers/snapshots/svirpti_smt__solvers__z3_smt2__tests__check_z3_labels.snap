@@ -1,0 +1,5 @@
+---
+source: smt/src/solvers/z3_smt2.rs
+expression: expr
+---
+!(((!(k<10)&&(k<20))==>lblneg(ArrayAccess1: (!(k<100)&&(k<100))))&&(!(!(k<10)&&(k<20))==>lblneg(ArrayAccess2: (!(k<100)&&(k<100)))))

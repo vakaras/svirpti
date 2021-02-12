@@ -1,0 +1,24 @@
+---
+source: vir-derive/tests/high_parser.rs
+expression: program
+---
+program {
+  sorts: []
+  functions: []
+  axioms: []
+  procedure:
+    variables:
+      a: Bool
+    blocks:
+      [0] entry:
+        guard: true
+        successors: [1]
+      [1] bb1:
+        guard: forall(|b: Int, | ((a>5)==>((a>4)&&true)) [])
+        assume label1 forall(|a: Int, | ((a>5)==>((a>4)&&true)) [(a,true,),])
+        successors: [2]
+      [2] exit:
+        guard: true
+        successors: []
+}
+

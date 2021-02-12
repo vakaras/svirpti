@@ -1,0 +1,20 @@
+[package]
+name = "svirpti"
+version = "0.1.0"
+authors = ["Vytautas Astrauskas <vastrauskas@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "A verifier for VIR."
+repository = "https://github.com/vakaras/svirpti"
+
+[dependencies]
+svirpti-smt = { path = "../smt" }
+svirpti-vir = { path = "../vir" }
+svirpti-vir-derive = { path = "../vir-derive" }
+index_vec = { version = "0.1.2", features = ["serde"] }
+rsmt2 = { git = "https://github.com/vakaras/rsmt2", branch = "labels" }
+serde = { version = "1.0", features = ["derive"] }
+
+[dev-dependencies]
+walkdir = "2.3.1"
+insta = "1.5.2"

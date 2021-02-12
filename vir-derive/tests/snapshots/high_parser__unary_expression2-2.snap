@@ -1,0 +1,93 @@
+---
+source: vir-derive/tests/high_parser.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Bool
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        BinaryOperation:
+          kind: And
+          left:
+            Constant:
+              Bool: true
+          right:
+            UnaryOperation:
+              kind: Not
+              arg:
+                Variable:
+                  name: a
+      statements:
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  UnaryOperation:
+                    kind: Not
+                    arg:
+                      Variable:
+                        name: a
+                right:
+                  UnaryOperation:
+                    kind: Not
+                    arg:
+                      Variable:
+                        name: a
+            label: label1
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: And
+                left:
+                  BinaryOperation:
+                    kind: And
+                    left:
+                      UnaryOperation:
+                        kind: Not
+                        arg:
+                          Variable:
+                            name: a
+                    right:
+                      UnaryOperation:
+                        kind: Not
+                        arg:
+                          Variable:
+                            name: a
+                right:
+                  UnaryOperation:
+                    kind: Not
+                    arg:
+                      UnaryOperation:
+                        kind: Not
+                        arg:
+                          UnaryOperation:
+                            kind: Not
+                            arg:
+                              UnaryOperation:
+                                kind: Not
+                                arg:
+                                  Variable:
+                                    name: a
+            label: label1
+      successors:
+        - 2
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

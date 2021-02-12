@@ -1,0 +1,17 @@
+[package]
+name = "svirpti-smt"
+version = "0.1.0"
+authors = ["Vytautas Astrauskas <vastrauskas@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "A generic interface to SMT solvers used by svirpti."
+repository = "https://github.com/vakaras/svirpti"
+
+[dependencies]
+svirpti-vir = { path = "../vir" }
+rsmt2 = { git = "https://github.com/vakaras/rsmt2", branch = "labels" }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0.23"
+
+[dev-dependencies]
+insta = "1.5.2"

@@ -1,0 +1,115 @@
+---
+source: svirpti/tests/simple.rs
+expression: program
+---
+sorts: []
+axioms: []
+functions: []
+procedure:
+  variables:
+    - name: a
+      sort: Bool
+    - name: b
+      sort: Bool
+    - name: x
+      sort: Int
+  basic_blocks:
+    - label: entry
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 1
+    - label: bb1
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors:
+        - 2
+        - 3
+    - label: bb2
+      guard:
+        Variable:
+          name: a
+      statements:
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: GtCmp
+                left:
+                  Variable:
+                    name: x
+                right:
+                  Constant:
+                    Int: 5
+            label: l1
+      successors:
+        - 4
+    - label: bb3
+      guard:
+        Variable:
+          name: b
+      statements:
+        - Assume:
+            assertion:
+              BinaryOperation:
+                kind: LtCmp
+                left:
+                  Variable:
+                    name: x
+                right:
+                  Constant:
+                    Int: 8
+            label: l2
+      successors:
+        - 4
+    - label: bb4
+      guard:
+        Constant:
+          Bool: true
+      statements:
+        - Assert:
+            assertion:
+              BinaryOperation:
+                kind: Or
+                left:
+                  BinaryOperation:
+                    kind: Implies
+                    left:
+                      Variable:
+                        name: a
+                    right:
+                      BinaryOperation:
+                        kind: GtCmp
+                        left:
+                          Variable:
+                            name: x
+                        right:
+                          Constant:
+                            Int: 5
+                right:
+                  BinaryOperation:
+                    kind: Implies
+                    left:
+                      Variable:
+                        name: b
+                    right:
+                      BinaryOperation:
+                        kind: LtCmp
+                        left:
+                          Variable:
+                            name: x
+                        right:
+                          Constant:
+                            Int: 8
+            label: l3
+      successors:
+        - 5
+    - label: exit
+      guard:
+        Constant:
+          Bool: true
+      statements: []
+      successors: []

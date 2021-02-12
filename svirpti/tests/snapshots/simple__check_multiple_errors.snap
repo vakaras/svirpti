@@ -1,0 +1,35 @@
+---
+source: svirpti/tests/simple.rs
+expression: program
+---
+program {
+  sorts: []
+  functions: []
+  axioms: []
+  procedure:
+    variables:
+      x: Int
+    blocks:
+      [0] entry:
+        guard: true
+        successors: [1]
+      [1] bb1:
+        guard: true
+        successors: [2, 3]
+      [2] bb2:
+        guard: (x>0)
+        assert l1 (x==2)
+        successors: [4]
+      [3] bb3:
+        guard: !(x>0)
+        assert l2 (x<0)
+        assert l3 (x!=0)
+        successors: [4]
+      [4] bb4:
+        guard: true
+        successors: [5]
+      [5] exit:
+        guard: true
+        successors: []
+}
+

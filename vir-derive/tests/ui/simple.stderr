@@ -1,0 +1,28 @@
+error: missing procedure
+ --> $DIR/simple.rs:5:13
+  |
+5 |       let _ = vir_high!{
+  |  _____________^
+6 | |
+7 | |     };
+  | |_____^
+  |
+  = note: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: unexpected end of input, expected `locals`
+  --> $DIR/simple.rs:12:21
+   |
+12 |         procedure { }
+   |                     ^
+
+error: `exit` is reserved for exiting procedure
+  --> $DIR/simple.rs:28:13
+   |
+28 |             exit { }
+   |             ^^^^
+
+error: no block with this label
+  --> $DIR/simple.rs:51:24
+   |
+51 |                 goto { bb2 }
+   |                        ^^^
