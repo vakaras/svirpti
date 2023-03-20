@@ -8,6 +8,6 @@ description = "A VIR generator."
 repository = "https://github.com/vakaras/svirpti"
 
 [dependencies]
-syn = { version = "1.0", features = ["full", "fold", "parsing", "derive"] }
+syn = { version = "2.0", features = ["full", "fold", "parsing", "derive"] }
 quote = "1.0"
 proc-macro2 = { version = "1.0", features = ["span-locations"] }
